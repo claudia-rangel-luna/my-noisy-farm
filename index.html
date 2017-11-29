@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<main class="parallax">
+		<h1><img  src="farm-images/logo.png"></h1>
+		
+	</main>
+	<section>
+		<img class="key" onclick="playpig()" data-key="pig" src="farm-images/pig.png">
+		<img class="key" onclick="playcow()" data-key="cow" src="farm-images/cow-bg.png">
+		<img class="key" onclick="playchicken()" data-key="chicken" src="farm-images/chicken.png">
+		<img class="key horse" onclick="playhorse()" data-key="horse" src="farm-images/horse.png">
+		
+		<audio data-key="pig" src="sounds/pig.mp3">
+		<audio data-key="cow" src="sounds/cow.mp3">
+		<audio data-key="chicken" src="sounds/chicken.mp3">
+		<audio data-key="horse" src="sounds/horse.mp3">
+
+	</section>
+<script type="text/javascript">
+	
+	function playpig (e) {
+		var audio = document.querySelector('audio[data-key="pig"]');
+
+		audio.currentTime = 0;
+		audio.play();
+	}
+	function playcow (e) {
+		var audio = document.querySelector('audio[data-key="cow"]');
+
+		audio.currentTime = 0;
+		audio.play();
+	}
+	function playchicken (e) {
+		var audio = document.querySelector('audio[data-key="chicken"]');
+
+		audio.currentTime = 0;
+		audio.play();
+	}
+	function playhorse (e) {
+		var audio = document.querySelector('audio[data-key="horse"]');
+
+		audio.currentTime = 0;
+		audio.play();
+	}
+	function removeTransition(e) {
+		console.dir(e);
+		if(e.propertyName != 'transform') return;
+		e.srcElement.classList.remove('big-key');
+
+	}
+
+	const keys = document.querySelectorAll('.key');
+	keys.forEach(k => k.addEventListener('transitionend', removeTransition));
+</script>	
+</body>
+</html>
